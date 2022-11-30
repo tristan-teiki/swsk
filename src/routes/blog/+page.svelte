@@ -9,6 +9,11 @@
 
   onMount(async () => {
     blogPosts = await load();
+    blogPosts.sort(function( a , b){
+      if(Number(a.attributes.order) > Number(b.attributes.order)) return 1;
+      if(Number(a.attributes.order) < Number(b.attributes.order)) return -1;
+      return 0;
+    });
     categories = categorize(blogPosts);
   })
 
