@@ -6,13 +6,13 @@
   let blogPost: any = [];
   let blogContent: any;
   let showShareLinks: bool = false;
+  let likes = 0;
   export let data;
 
   onMount(async () => {
     blogPost = await loadData(data.slug);
+    likes = blogPost[0].attributes.likes;
   })
-
-
 
   export const loadData: Load = async (slug) => {
   const res = await fetch(`https://jellyfish-app-9zisi.ondigitalocean.app/api/posts?filters[slug][$eq]=${slug}`);
@@ -46,7 +46,6 @@
     fetch(`https://jellyfish-app-9zisi.ondigitalocean.app/api/posts/${blogPost[0].id}`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        
       })
       .catch(error => console.log('error', error));
   }
@@ -63,11 +62,11 @@
       <p class="blog--content">{@html blogPost[0].attributes.content}</p>
       <div class="controls">
         <div class="blog--likes" on:click={async () => { 
-          updateLikes(blogPost, blogPost[0].attributes.likes, data)
-          blogPost = await loadData(data.slug)
+          likes += 1;
+          await updateLikes(blogPost, blogPost[0].attributes.likes, data)
         }}>
           <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24"><path d="m12 5.72c-2.624-4.517-10-3.198-10 2.461 0 3.725 4.345 7.727 9.303 12.54.194.189.446.283.697.283s.503-.094.697-.283c4.977-4.831 9.303-8.814 9.303-12.54 0-5.678-7.396-6.944-10-2.461z" fill-rule="nonzero" fill="currentColor"/></svg>
-          <span>{blogPost[0].attributes.likes}</span>
+          <span>{likes}</span>
         </div>
         <div class="share--menu">
           <div class="share" on:click={() => showShareLinks = !showShareLinks}>
