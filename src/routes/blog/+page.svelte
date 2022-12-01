@@ -34,7 +34,6 @@
   }
 </script>
 
-<main>
   <div class="main--blog--page">
     {#if (blogPosts.length > 0)}
       {#each categories as category}
@@ -67,7 +66,6 @@
       <p class="main--page--text">Posts list is empty</p>
     {/if}
   </div>
-</main>
 
 <style lang=scss>
   .main--blog--page {
