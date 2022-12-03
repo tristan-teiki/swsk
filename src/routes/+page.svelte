@@ -93,6 +93,7 @@
       }
 
       .hero-content {
+        z-index: 999 !important;
         position: absolute;
         top: 50%;
         left: 50%;
