@@ -6,12 +6,12 @@
   let blogPost: any = [];
   let blogContent: any;
   let showShareLinks: bool = false;
-  let likes = 0;
+  let liked: bool = false;
+
   export let data;
 
   onMount(async () => {
     blogPost = await loadData(data.slug);
-    likes = blogPost[0].attributes.likes;
   })
 
   export const loadData: Load = async (slug) => {
@@ -19,35 +19,59 @@
     const response = await res.json();
 
     if (res.status !== 200) {
-      // goto
-      // NOT FOUND PAGE
+      goto('/error');
       return;
     }
 
     return response.data;
   };
 
-  const updateLikes = (blogPost, likes, data) => {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  const updateLikes = (blogPost, data) => {
+    if (!liked) {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
 
-    let raw = `{
-      "data": {
-        "likes": ${likes + 1}
-      }
-    }`;
+      let raw = `{
+        "data": {
+          "likes": ${blogPost[0].attributes.likes + 1}
+        }
+      }`;
 
-    let requestOptions: any = {
-      method: 'PUT',
-      headers: myHeaders,
-      body: raw
-    };
+      let requestOptions: any = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw
+      };
 
-    fetch(`https://jellyfish-app-9zisi.ondigitalocean.app/api/posts/${blogPost[0].id}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-      })
-      .catch(error => console.log('error', error));
+      fetch(`https://jellyfish-app-9zisi.ondigitalocean.app/api/posts/${blogPost[0].id}`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          liked = true;
+        })
+        .catch(error => console.log('error', error));
+    } else {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      let raw = `{
+        "data": {
+          "likes": ${blogPost[0].attributes.likes - 1}
+        }
+      }`;
+
+      let requestOptions: any = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw
+      };
+
+      fetch(`https://jellyfish-app-9zisi.ondigitalocean.app/api/posts/${blogPost[0].id}`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          liked = false;
+        })
+        .catch(error => console.log('error', error));
+    }
   }
 </script>
 
@@ -61,12 +85,12 @@
       <div class="blog--author">by {blogPost[0].attributes.author}</div>
       <p class="blog--content">{@html blogPost[0].attributes.content}</p>
       <div class="controls">
-        <div class="blog--likes" on:click={async () => { 
-          likes += 1;
+        <div class="blog--likes {liked ? "liked" : ""}" on:click={async () => { 
           await updateLikes(blogPost, blogPost[0].attributes.likes, data)
+          blogPost = await loadData(data.slug);
         }}>
           <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24"><path d="m12 5.72c-2.624-4.517-10-3.198-10 2.461 0 3.725 4.345 7.727 9.303 12.54.194.189.446.283.697.283s.503-.094.697-.283c4.977-4.831 9.303-8.814 9.303-12.54 0-5.678-7.396-6.944-10-2.461z" fill-rule="nonzero" fill="currentColor"/></svg>
-          <span>{likes}</span>
+          <span>{blogPost[0].attributes.likes}</span>
         </div>
         <div class="share--menu">
           <div class="share" on:click={() => showShareLinks = !showShareLinks}>
@@ -153,6 +177,15 @@
       margin-bottom: 50px;
     }
 
+    .liked {
+      background-color: #d00000 !important;
+      box-shadow: 0 0 15px #d00000 !important;
+      svg {
+        color: white !important;
+      }
+      color: white !important;
+    }
+
     .controls {
       @include flex(row, center, center);
       width: 100%;
@@ -164,16 +197,9 @@
         position: relative;
 
         &:hover {
-          background-color: #d00000;
-          box-shadow: 0 0 15px #d00000;
-          color: white;
           cursor: pointer;
           transform: scale(1.1);
           border: 1.5px solid rgba(255, 255, 255, 0.5);
-
-          svg {
-            color: white;
-          }
         }
 
         &:active {
