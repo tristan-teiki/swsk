@@ -14,7 +14,7 @@
 
 <div class="main-page">
   <section class="hero">
-    <video autoplay="autoplay" muted loop id="video">
+    <video autoplay="autoplay" muted loop id="video" playsinline style="pointer-events: none;">
         <source src="/videos/whales.mp4" type="video/mp4" />
     </video>
     <div class="hero-content">
@@ -149,6 +149,7 @@
 
           img {
             height: 150px;
+            object-fit: contain;
           }
         }
       }
