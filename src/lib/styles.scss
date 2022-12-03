@@ -394,6 +394,27 @@ main {
     top: 720px !important;
     transform: scale(.8) !important;
   }
+
+  .blog--page {
+    .controls {
+      flex-direction: column !important;
+      gap: 20px !important;
+
+      .share--menu {
+        width: 100%;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        
+        .share--links {
+          position: static !important;
+          transform-origin: center !important;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 480px) {

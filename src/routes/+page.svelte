@@ -14,7 +14,7 @@
 
 <div class="main-page">
   <section class="hero">
-    <video autoplay muted loop id="video">
+    <video autoplay="autoplay" muted loop id="video">
         <source src="/videos/whales.mp4" type="video/mp4" />
     </video>
     <div class="hero-content">
