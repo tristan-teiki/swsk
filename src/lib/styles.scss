@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-$bColor: #101019;
+$bColor: #000;
 $bColor2: #056AFF;
 $tColor: #FFF;
 
@@ -39,7 +39,7 @@ html {
 #get-in-touch {
   background-color: white;
   color: $bColor;
-  font-size: 2vw;
+  font-size: 250%;
   font-weight: 600;
   padding: 10px 30px;
   border-radius: 100px;
@@ -87,7 +87,7 @@ nav {
     @include flex(column, center, center);
     a {
       position: relative;
-      font-size: 2.2vw;
+      font-size: 250%;
       font-weight: 700;
 
       &:hover {
@@ -98,13 +98,14 @@ nav {
 
   .sm-links {
     @include flex(row, center, center);
-    column-gap: 30px; 
+    column-gap: 35px; 
     padding: 10px;
     
     a {
       position: relative;
+
       img {
-        height: 50px;
+        height: 40px;
       }
 
       &:hover {
@@ -198,4 +199,319 @@ main {
   width: 100vw;
   min-height: calc(100vh - 100px);
   top: 100px;
+}
+
+@media screen and (min-width: 1201px) {
+  .hero-content {
+    width: 100%;
+    font-size: 70% !important;
+  }
+
+  .services {
+    .services-slide {
+      height: 450px !important;
+    }
+
+    .services-pagination {
+      top: 600px !important;
+    }
+  }
+
+  .clients {
+    h2 {
+      font-size: 200% !important;
+    }
+  }
+
+  .contact {
+    font-size: 150%;
+
+    .contact-form {
+      max-width: 600px !important;
+    }
+
+    .contact-now {
+      max-width: 600px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero {
+    h1 {
+      font-size: 600% !important;
+    }
+  }
+
+  .clients {
+    h2 {
+      width: 50% !important;
+      font-size: 220% !important;
+    }
+
+    .swiper {
+      width: 50% !important;
+    }
+  }
+
+  .services-slide {
+    flex-direction: column !important;
+    
+    img {
+      height: 240px !important;
+    }
+
+    .slide-content {
+      width: 100% !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+
+      ul {
+        margin-left: 25px !important;
+
+        li {
+          font-size: 200% !important;
+        }
+      }
+    }
+  }
+
+  .services-pagination {
+    top: 950px !important;
+  }
+
+  .contact {
+    font-size: 160% !important;
+  }
+
+  .contact-form,
+  .contact-now {
+    max-width: 550px !important;
+  }
+
+  .blog--row--wrapper {
+    font-size: 120% !important;
+  }
+
+  .blog--page {
+    font-size: 120% !important;
+  }
+
+  .services-slide {
+    height: 800px !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .hero-content {
+    width: 100% !important;
+    font-size: 85% !important;
+
+    h1 {
+      font-size: 450% !important;
+    }
+  }
+
+  .clients {
+    h2 {
+      font-size: 190% !important;
+    }
+  }
+
+  .slide-title {
+    width: 30% !important;
+  }
+
+  .slide-content {
+    font-size: 85% !important;
+  }
+
+  .blog--category {
+    text-align: center !important;
+  }
+
+  .blog--row {
+    justify-content: center !important;
+  }
+
+  .controls {
+    transform: scale(1.2) !important;
+  }
+
+  .services-slide {
+    height: 800px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-content {
+    font-size: 70% !important;
+  }
+
+  .header {
+    #icon,
+    .controls {
+      transform: scale(.85) !important;
+    }
+  }
+
+  .clients {
+    h2 {
+      font-size: 140% !important;
+    }
+  }
+
+  .swiper {
+    a {
+      img {
+        transform: scale(.8) !important;
+      }
+    }
+  }
+
+  .nav-body {
+    font-size: 90% !important;
+
+    #get-in-touch {
+      font-size: 170% !important;
+    }
+  }
+
+  .services {
+    font-size: 70% !important;
+  }
+
+  .services-slide {
+    padding: 20px !important;
+    height: 600px !important;
+  }
+
+  .services-pagination {
+    top: 720px !important;
+    transform: scale(.8) !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-content {
+    font-size: 50% !important;
+  }
+
+  .clients {
+    h2 {
+      font-size: 115% !important;
+    }
+  }
+
+  .main-page {
+    .container {
+      padding: 0 10px !important;
+    }
+  }
+
+  .swiper-slide {
+    a {
+      img {
+        transform: scale(.6) !important;
+      }
+    }
+  }
+
+  .header {
+    padding: 5px;
+
+    #icon,
+    .controls {
+      transform: scale(.65) !important;
+    }
+  }
+
+  .nav-body {
+    font-size: 70% !important;
+  }
+
+  .sm-links {
+    a {
+      img {
+        height: 30px !important;
+      }
+    }
+  }
+
+  .clients {
+    h2 {
+      width: 70% !important;
+    }
+  }
+
+  .services {
+    font-size: 45% !important;
+
+    .services-slide-name {
+      margin: 10px 0 !important;
+    }
+  }
+
+  .services-slide {
+    height: 400px !important;
+  }
+
+  .services-pagination {
+    top: 480px !important;
+    transform: scale(0.7) !important;
+  }
+
+  .main--blog--page,
+  .blog--page {
+    font-size: 70% !important;
+
+    .controls {
+      transform: scale(0.9) !important;
+    }
+  }
+
+  #back {
+    transform: scale(0.9) !important;
+  }
+
+  .blog--post {
+    height: 150px !important;
+  }
+
+  .contact {
+    font-size: 80% !important;
+  }
+
+  .contact-form,
+  .contact-now {
+    max-width: 300px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .services {
+    font-size: 30% !important;
+    padding: 25px 0 !important;
+
+    .services-slide-name {
+      margin: 5px 0 !important;
+    }
+  }
+
+  .services-slide {
+    height: 300px !important;
+
+    img {
+      width: 50px !important;
+    }
+  }
+
+  .services-pagination {
+    top: 380px !important;
+    transform: scale(0.4) !important;
+  }
 }

@@ -35,7 +35,8 @@
 </script>
 
   <div class="main--blog--page">
-    {#if (blogPosts.length > 0)}
+    <div class="container">
+      {#if (blogPosts.length > 0)}
       {#each categories as category}
         <div class="blog--row--wrapper">
           <h1 class="blog--category">{category}</h1>
@@ -62,9 +63,8 @@
           </div>
         </div>
       {/each}
-    {:else}
-      <p class="main--page--text">Posts list is empty</p>
     {/if}
+    </div>
   </div>
 
 <style lang=scss>
@@ -72,10 +72,10 @@
     height: 100%;
     width: 100%;
     @include flex(column, flex-start, flex-start);
-    row-gap: 20px;
+    row-gap: 50px;
+    padding-bottom: 50px;
 
     .blog--row--wrapper {
-      padding: 20px;
       width: 100%;
 
       .blog--category {
@@ -86,20 +86,15 @@
       }
     }
 
+    .container {
+      @include flex(column, flex-start, flex-start);
+      row-gap: 50px;
+    }
+
     .blog--row {
-      // padding: 20px 0;
       @include flex(row, flex-start, flex-start);
       flex-wrap: wrap;
       gap: 20px;
-
-      // overflow-x: scroll;
-      // &::-webkit-scrollbar {
-      //   height: 10px;
-      // }
-      // &::-webkit-scrollbar-thumb {
-      //   border-radius: 100px;
-      //   background-color: rgba(255, 255, 255, 0.15);
-      // }
 
       .blog--post {
         transition: all ease-in-out .3s;
@@ -108,13 +103,12 @@
           background-color: #fff;
           position: relative;
           transform: translateY(-10px);
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
         height: 220px;
         width: 380px;
-        background-color: #f2f2f2;
-        border: 2.5px solid rgba(0, 0, 0, .2);
+        background-color: #e5e5e5;
+        border: 2.5px solid #e5e5e5;
         color: #000107;
         padding: 15px;
         border-radius: 5px;

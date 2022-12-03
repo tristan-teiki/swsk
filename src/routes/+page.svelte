@@ -2,6 +2,14 @@
   import { Swiper, SwiperSlide } from "swiper/svelte";
   import { Autoplay } from 'swiper';
   import "swiper/css";
+	import { onMount } from "svelte";
+
+  let logosPerView = 0;
+
+  onMount(() => {
+    logosPerView = window.innerWidth > 1200 ? 3 : window.innerWidth > 500 ? 2 : 1;
+    console.log(logosPerView);
+  });
 </script>
 
 <div class="main-page">
@@ -12,14 +20,15 @@
     <div class="hero-content">
         <h1>We Tackle Your <br>Growth Problems</h1>
         <p>Scalewhale is a Paid Media agency<br> with expertise in Analytics, and MarOps</p>
-        <a id="get-in-touch" href="#">Get in Touch</a>
+        <a id="get-in-touch" href="/contact">Get in Touch</a>
     </div>
   </section>
   <section class="container">
     <div class="clients">
       <h2>We've had the pleasure<br> of working with:</h2>
+      {#if logosPerView > 0}
       <Swiper
-        slidesPerView={3}
+        slidesPerView={logosPerView}
         autoplay={{
           delay: 1000,
           disableOnInteraction: false,
@@ -61,6 +70,7 @@
           </a>
         </SwiperSlide>
       </Swiper>
+      {/if}
     </div>
   </section>
 </div>
@@ -92,13 +102,13 @@
         row-gap: 10px;
 
         h1 {
-          font-size: 5vw;
+          font-size: 700%;
           font-weight: 800;
           text-align: center;
         }
 
         p {
-          font-size: 2.5vw;
+          font-size: 250%;
           text-align: center;
           font-weight: 600;
         }
@@ -113,10 +123,14 @@
         font-size: 180%;
         color: white;
         font-weight: 600;
-        width: 40%;
+        width: 50%;
       }
 
       .swiper-slide {
+        a {
+          @include flex(row, center, center);
+        }
+
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;

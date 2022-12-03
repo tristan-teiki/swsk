@@ -10,11 +10,11 @@
 	<div class="nav-body">
 		<div class="links">
 			<a href="/services">Services</a>
-			<a href="/testimonials">Testimonials</a>
+			<!-- <a href="/testimonials">Testimonials</a> -->
 			<a href="/blog">Blog</a>
-			<a href="/academy">Academy</a>
+			<!-- <a href="/academy">Academy</a> -->
 		</div>
-		<a id="get-in-touch" href="#">Get in Touch</a>
+		<a id="get-in-touch" href="/contact">Get in Touch</a>
 		<div class="sm-links">
 			<a href="#">
 				<img src="/images/sm-icons/lnkdn.svg" alt="LinkedIn Icon">
@@ -40,7 +40,11 @@
 		</a>
 		<div class="controls">
 			<div id="toggle"
-				on:click={() => darkMode = !darkMode}
+				on:click={() => {
+					darkMode = !darkMode;
+					localStorage.setItem('darkMode', darkMode);
+					}
+				}
 			>
 				<img src="/images/sun.svg" alt="Sun Icon">
 				<img src="/images/moon.svg" alt="Moon Icon">

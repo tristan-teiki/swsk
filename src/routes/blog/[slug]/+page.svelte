@@ -51,7 +51,7 @@
   }
 </script>
 
-<main>
+<div class="container">
   <div id="back" on:click={() => goto('/blog')}>
     <img src="/images/back.svg" alt="Back Arrow">
   </div>
@@ -95,15 +95,16 @@
       </div>
     {/if}
   </div>
-</main>
+</div>
 
 <style lang=scss>
   #back {
     transition: .2s;
-    position: absolute;
+    position: relative;
+    width: 55px;
+    height: 55px;
     top: 30px;
-    left: 30px;
-    opacity: .7;
+    opacity: 1;
 
     background-color: #101019;
     border: 2px solid white;
@@ -121,12 +122,11 @@
   }
 
   .blog--page {
-    width: 1200px;
     margin: auto;
     padding: 20px 0;
     @include flex(column, center, flex-start);
     color: white;
-    overflow: scroll;
+    overflow: hidden;
     
     .blog--category {
       font-size: 120%;
