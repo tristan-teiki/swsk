@@ -68,7 +68,7 @@
       fetch(`https://jellyfish-app-9zisi.ondigitalocean.app/api/posts/${blogPost[0].id}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-          liked = false;
+          liked = fa;
         })
         .catch(error => console.log('error', error));
     }

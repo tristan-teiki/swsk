@@ -41,32 +41,32 @@
       >
         <SwiperSlide>
           <a href="#" target="_blank">
-            <img src="/images/clients-icons/nzxt.svg" alt="NZXT">
+            <img src="/images/clients-icons/nzxt-icon.png" alt="NZXT">
           </a>
         </SwiperSlide>
         <SwiperSlide>
           <a href="#" target="_blank">
-            <img src="/images/clients-icons/cushion.svg" alt="Cushion">
+            <img src="/images/clients-icons/cushion-icon.png" alt="Cushion">
           </a>
         </SwiperSlide>
         <SwiperSlide>
           <a href="#" target="_blank">
-            <img src="/images/clients-icons/irl.svg" alt="IRL">
+            <img src="/images/clients-icons/irl-icon.png" alt="IRL">
           </a>
         </SwiperSlide>
         <SwiperSlide>
           <a href="#" target="_blank">
-            <img src="/images/clients-icons/kyla.svg" alt="Kyla">
+            <img src="/images/clients-icons/kyla.png" alt="Kyla">
           </a>
         </SwiperSlide>
         <SwiperSlide>
           <a href="#" target="_blank">
-            <img src="/images/clients-icons/outco.svg" alt="Outco">
+            <img src="/images/clients-icons/outco-icon.png" alt="Outco">
           </a>
         </SwiperSlide>
         <SwiperSlide>
           <a href="#" target="_blank">
-            <img src="/images/clients-icons/fellow.svg" alt="Fellow">
+            <img src="/images/clients-icons/ficon.png" alt="Fellow">
           </a>
         </SwiperSlide>
       </Swiper>
@@ -148,9 +148,7 @@
           text-decoration: none;
 
           img {
-            height: 130px;
-            width: 130px;
-            object-fit: contain;
+            height: 150px;
           }
         }
       }
