@@ -7,6 +7,7 @@
   let blogContent: any;
   let showShareLinks: bool = false;
   let liked: bool = false;
+  let shareClick = false;
 
   export let data;
 
@@ -68,7 +69,7 @@
       fetch(`https://jellyfish-app-9zisi.ondigitalocean.app/api/posts/${blogPost[0].id}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-          liked = fa;
+          liked = false;
         })
         .catch(error => console.log('error', error));
     }
@@ -111,8 +112,18 @@
             <a class="share--link reddit" target="_blank" href={`https://www.reddit.com/submit?url=${window.location.href}&title=${blogPost[0].attributes.title}`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179l-.013-.003-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574 0-.868.709-1.575 1.581-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z" fill="currentColor" /></svg>
             </a>
-            <a class="share--link link" target="_blank" on:click={() => navigator.clipboard.writeText(window.location.href)}>
+            <a class="share--link link" target="_blank" on:click={() => navigator.clipboard.writeText(window.location.href)}
+              on:click={() => {
+                shareClick = true;
+                setTimeout(() => {
+                  shareClick = false;
+                }, 2000);
+              }}
+              >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z" fill="currentColor" /></svg>
+              <div class="copied" style="transform: {shareClick ? 'scale(1)' : 'scale(0)'}">
+                Copied
+              </div>
             </a>
           </div>
         </div>
@@ -122,6 +133,18 @@
 </div>
 
 <style lang=scss>
+  .copied {
+    position: absolute;
+    top: 50px;
+    padding: 10px;
+    font-size: 120%;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    font-weight: 600;
+    transform: scale(0);
+  }
+
   #back {
     transition: .2s;
     position: relative;
@@ -147,7 +170,7 @@
 
   .blog--page {
     margin: auto;
-    padding: 20px 0;
+    padding: 20px 0 100px 0;
     @include flex(column, center, flex-start);
     color: white;
     overflow: hidden;
@@ -263,6 +286,10 @@
         left: 80px;
         transform: scale(0);
         transform-origin: left;
+
+        a {
+          position: relative;
+        }
 
         svg {
           color: black;

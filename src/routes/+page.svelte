@@ -93,7 +93,6 @@
       }
 
       .hero-content {
-        z-index: 999 !important;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -109,7 +108,7 @@
         }
 
         p {
-          font-size: 250%;
+          font-size: 350%;
           text-align: center;
           font-weight: 600;
         }
