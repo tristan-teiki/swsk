@@ -75,6 +75,10 @@
     row-gap: 50px;
     padding-bottom: 50px;
 
+    .container {
+      padding: 0 !important;
+    }
+
     .blog--row--wrapper {
       width: 100%;
 
