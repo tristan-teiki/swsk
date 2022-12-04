@@ -46,7 +46,7 @@
 	class="{ darkMode ? 'dark-mode' : 'light-mode' }"
 >
 	<div class="header">
-		<a href="/" id="icon">
+		<a href="/" id="icon" on:click={() => showNav = false}>
 			<img src="/images/icon.svg" alt="Scalewhale Blue Icon">
 		</a>
 		<div class="controls">
