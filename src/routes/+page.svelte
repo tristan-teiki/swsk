@@ -5,10 +5,10 @@
 	import { onMount } from "svelte";
 
   let logosPerView = 0;
+  let darkMode = false;
 
   onMount(() => {
     logosPerView = window.innerWidth > 1200 ? 3 : window.innerWidth > 500 ? 2 : 1;
-    console.log(logosPerView);
   });
 </script>
 
@@ -20,7 +20,7 @@
     <div class="hero-content">
         <h1>We Tackle Your <br>Growth Problems</h1>
         <p>Scalewhale is a Paid Media agency<br> with expertise in Analytics, and MarOps</p>
-        <a id="get-in-touch" href="/contact">Get in Touch</a>
+        <a style="color: {darkMode ? "#056AFF" : "black"}" id="get-in-touch" href="/contact">Get in Touch</a>
     </div>
   </section>
   <section class="container">
@@ -40,22 +40,22 @@
         style="width: 60%;"
       >
         <SwiperSlide>
-          <a href="#" target="_blank">
+          <a href="https://nzxt.com/" target="_blank">
             <img src="/images/clients-icons/nzxt-icon.png" alt="NZXT">
           </a>
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" target="_blank">
+          <a href="https://cushion.ai/" target="_blank">
             <img src="/images/clients-icons/cushion-icon.png" alt="Cushion">
           </a>
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" target="_blank">
+          <a href="https://www.irl.com/" target="_blank">
             <img src="/images/clients-icons/irl-icon.png" alt="IRL">
           </a>
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" target="_blank">
+          <a href="https://kyla.com/p/" target="_blank">
             <img src="/images/clients-icons/kyla.png" alt="Kyla">
           </a>
         </SwiperSlide>
@@ -65,7 +65,7 @@
           </a>
         </SwiperSlide>
         <SwiperSlide>
-          <a href="#" target="_blank">
+          <a href="https://fellowproducts.com/" target="_blank">
             <img src="/images/clients-icons/ficon.png" alt="Fellow">
           </a>
         </SwiperSlide>

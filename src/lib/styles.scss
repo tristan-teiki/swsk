@@ -39,14 +39,14 @@ html {
 #get-in-touch {
   background-color: white;
   color: $bColor;
-  font-size: 250%;
+  font-size: 30px;
   font-weight: 600;
   padding: 10px 30px;
   border-radius: 100px;
   
   &:hover {
     position: relative;
-    transform: translateY(-5px);
+    transform: scale(1.1);
   }
 }
 
@@ -120,14 +120,19 @@ header {
   height: 100px;
   position: absolute;
   z-index: 10;
-  width: 100vw;
+  width: 100%;
+   
 
   .header {
-    @include flex(row, center, space-between);
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
     height: 100%;
+    overflow: hidden;
+    @include flex(row, center, space-between);
 
     #icon {
-      @include flex(row, center, flex);
+      @include flex(row, center, flex-start);
       img {
         height: 70px;
       }
@@ -138,8 +143,8 @@ header {
     }
 
     .controls {
-      @include flex(row, center, space-between);
       column-gap: 20px;
+      @include flex(row, center, flex-end);
 
       #toggle {
         position: relative;
@@ -241,10 +246,27 @@ main {
     width: 100%;
   }
 
+  .header {
+    padding: 0 10px !important;
+  }
+
+  #toggle {
+    transform: scale(.8) !important;
+  }
+
   .hero {
     h1 {
       font-size: 600% !important;
     }
+
+    p {
+      font-size: 250% !important;
+    }
+  }
+
+  .hero #get-in-touch,
+  nav #get-in-touch {
+    font-size: 230% !important;
   }
 
   .clients {
@@ -258,11 +280,58 @@ main {
     }
   }
 
+  // .services-slide {
+  //   flex-direction: column !important;
+    
+  //   img {
+  //     height: 240px !important;
+  //   }
+
+  //   .slide-content {
+  //     width: 100% !important;
+  //     justify-content: center !important;
+  //     align-items: flex-start !important;
+
+  //     ul {
+  //       margin-left: 25px !important;
+
+  //       li {
+  //         font-size: 200% !important;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // .services-pagination {
+  //   top: 950px !important;
+  // }
+
+  .contact {
+    font-size: 160% !important;
+  }
+
+  .contact-form,
+  .contact-now {
+    max-width: 550px !important;
+  }
+
+  .blog--row--wrapper {
+    font-size: 120% !important;
+  }
+
+  .blog--page {
+    font-size: 120% !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
   .services-slide {
     flex-direction: column !important;
+    height: 525px !important;
+    font-size: 85% !important;
     
     img {
-      height: 240px !important;
+      height: 200px !important;
     }
 
     .slide-content {
@@ -281,32 +350,9 @@ main {
   }
 
   .services-pagination {
-    top: 950px !important;
+    top: 650px !important;
   }
 
-  .contact {
-    font-size: 160% !important;
-  }
-
-  .contact-form,
-  .contact-now {
-    max-width: 550px !important;
-  }
-
-  .blog--row--wrapper {
-    font-size: 120% !important;
-  }
-
-  .blog--page {
-    font-size: 120% !important;
-  }
-
-  .services-slide {
-    height: 800px !important;
-  }
-}
-
-@media screen and (max-width: 1024px) {
   .hero-content {
     width: 100% !important;
     font-size: 85% !important;
@@ -314,6 +360,15 @@ main {
     h1 {
       font-size: 450% !important;
     }
+
+    p {
+      font-size: 220% !important;
+    }
+  }
+
+  .hero #get-in-touch,
+  nav #get-in-touch {
+    font-size: 180% !important;
   }
 
   .clients {
@@ -326,6 +381,18 @@ main {
     width: 30% !important;
   }
 
+  .header {
+    .controls {
+      column-gap: 10px !important;
+    }
+  }
+
+  #icon {
+    img {
+      height: 50px !important;
+    }
+  }
+  
   .slide-content {
     font-size: 85% !important;
   }
@@ -337,26 +404,11 @@ main {
   .blog--row {
     justify-content: center !important;
   }
-
-  .controls {
-    transform: scale(1.2) !important;
-  }
-
-  .services-slide {
-    height: 800px !important;
-  }
 }
 
 @media screen and (max-width: 768px) {
   .hero-content {
-    font-size: 70% !important;
-  }
-
-  .header {
-    #icon,
-    .controls {
-      transform: scale(.85) !important;
-    }
+    font-size: 80% !important;
   }
 
   .clients {
@@ -388,6 +440,7 @@ main {
   .services-slide {
     padding: 20px !important;
     height: 600px !important;
+    font-size: 100% !important;
   }
 
   .services-pagination {
@@ -419,7 +472,7 @@ main {
 
 @media screen and (max-width: 480px) {
   .hero-content {
-    font-size: 50% !important;
+    font-size: 55% !important;
   }
 
   .clients {
@@ -439,15 +492,6 @@ main {
       img {
         transform: scale(.6) !important;
       }
-    }
-  }
-
-  .header {
-    padding: 5px;
-
-    #icon,
-    .controls {
-      transform: scale(.65) !important;
     }
   }
 

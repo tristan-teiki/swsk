@@ -1,31 +1,42 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import '../app.postcss';
 
 	$: darkMode = false;
 	$: showNav = false;
+
+	onMount(() => {
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			darkMode = true;
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			darkMode = false;
+			localStorage.setItem('darkMode', 'false');
+		}
+	})
 </script>
 
 <nav class="{ darkMode ? 'dark-mode' : 'light-mode' } { showNav ? 'nav-visible' : '' }">
 	<div class="nav-body">
 		<div class="links">
-			<a href="/services">Services</a>
+			<a href="/services" on:click={() => showNav = false}>Services</a>
 			<!-- <a href="/testimonials">Testimonials</a> -->
-			<a href="/blog">Blog</a>
+			<a href="/blog" on:click={() => showNav = false}>Blog</a>
 			<!-- <a href="/academy">Academy</a> -->
 		</div>
 		<a id="get-in-touch" href="/contact">Get in Touch</a>
 		<div class="sm-links">
-			<a href="#">
+			<a href="https://www.linkedin.com/company/scalewhaleagency/" target="_blank">
 				<img src="/images/sm-icons/lnkdn.svg" alt="LinkedIn Icon">
 			</a>
-			<a href="#">
+			<a href="https://www.instagram.com">
 				<img src="/images/sm-icons/inst.svg" alt="Instagram Icon">
 			</a>
-			<a href="#">
+			<a href="https://www.discord.com">
 				<img src="/images/sm-icons/dsc.svg" alt="Discord Icon">
 			</a>
-			<a href="#">
+			<a href="https://www.twitter.com">
 				<img src="/images/sm-icons/tw.svg" alt="Twitter Icon">
 			</a>
 		</div>
@@ -34,7 +45,7 @@
 <header
 	class="{ darkMode ? 'dark-mode' : 'light-mode' }"
 >
-	<div class="container header">
+	<div class="header">
 		<a href="/" id="icon">
 			<img src="/images/icon.svg" alt="Scalewhale Blue Icon">
 		</a>
