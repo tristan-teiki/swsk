@@ -21,11 +21,11 @@
 	<div class="nav-body">
 		<div class="links">
 			<a href="/services" on:click={() => showNav = false}>Services</a>
-			<!-- <a href="/testimonials">Testimonials</a> -->
+			<a href="/testimonials" on:click={() => showNav = false}>Testimonials</a>
 			<a href="/blog" on:click={() => showNav = false}>Blog</a>
 			<!-- <a href="/academy">Academy</a> -->
 		</div>
-		<a id="get-in-touch" href="/contact" on:click={() => showNav = false}>Get in Touch</a>
+		<a id="get-in-touch" href="/contact" on:click={() => showNav = false}><span>Get in Touch</span></a>
 		<div class="sm-links">
 			<a href="https://www.linkedin.com/company/scalewhaleagency/" target="_blank">
 				<img src="/images/sm-icons/lnkdn.svg" alt="LinkedIn Icon">

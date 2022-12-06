@@ -24,10 +24,30 @@ html {
 
 .light-mode {
   background-color: $bColor2;
+
+  #get-in-touch {
+    color: $bColor2; 
+  }
+
+  .hero-content {
+    #get-in-touch {
+      color: $bColor2 !important; 
+    }
+  }
 }
 
 .dark-mode {
   background-color: $bColor;
+
+  #get-in-touch {
+    color: $bColor; 
+  }
+
+  .hero-content {
+    #get-in-touch {
+      color: $bColor !important; 
+    }
+  }
 }
 
 .container {
@@ -38,7 +58,6 @@ html {
 
 #get-in-touch {
   background-color: white;
-  color: $bColor;
   font-size: 30px;
   font-weight: 600;
   padding: 10px 30px;
@@ -325,6 +344,15 @@ main {
 }
 
 @media screen and (max-width: 1024px) {
+  .testimonials {
+    font-size: 80% !important;
+
+    .slide,
+    .slide-controls {
+      width: 300px !important;
+    }
+  }
+
   .services-slide {
     flex-direction: column !important;
     height: 525px !important;
@@ -471,6 +499,25 @@ main {
 }
 
 @media screen and (max-width: 480px) {
+  .testimonials {
+    font-size: 70% !important;
+
+    .testiomonials-slider {
+      margin: 10px !important;
+    }
+
+    .slide,
+    .slide-controls {
+      width: 270px !important;
+    }
+
+    .slide-controls {
+      div {
+        padding: 5px !important;
+      }
+    }
+  }
+
   .hero-content {
     font-size: 55% !important;
   }
