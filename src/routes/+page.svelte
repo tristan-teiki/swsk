@@ -12,20 +12,13 @@
 
     const videoElement = document.getElementById('video');
     const bgImg = document.getElementById('img-background');
-    let videoCantLoad = false;
 
     videoElement?.addEventListener('suspend', () => {
       if (bgImg !== null) {
         bgImg.style.display = 'block';
-        videoCantLoad = true;
+        videoElement.style.display = 'none';
       }
     });
-
-    if (!videoCantLoad) {
-      if (videoElement !== null) {
-        videoElement.style.display = 'block';
-      }
-    }
   });
 </script>
 
@@ -117,7 +110,6 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
-        display: block;
       }
 
       .hero-content {
