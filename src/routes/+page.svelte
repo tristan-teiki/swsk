@@ -10,20 +10,22 @@
   onMount(() => {
     logosPerView = window.innerWidth > 1200 ? 3 : window.innerWidth > 500 ? 2 : 1;
 
-    // const videoElement = document.getElementById('video');
-    // // const bgImg = document.getElementById('img-background');
+    const videoElement = document.getElementById('video');
+    const bgImg = document.getElementById('img-background');
+    let videoCantLoad = false;
 
-    // videoElement?.addEventListener('suspend', () => {
-    //   // suspended loading. Show play UI..
-    //   if (videoElement !== undefined) {
-    //     videoElement.style.display = 'none';
-    //     // bgImg.style.display = 'block';
-    //   }
-    // });
+    videoElement?.addEventListener('suspend', () => {
+      if (bgImg !== null) {
+        bgImg.style.display = 'block';
+        videoCantLoad = true;
+      }
+    });
 
-    // videoElement?.addEventListener('play', () => {
-    //   videoElement.style.display = 'block';
-    // });
+    if (!videoCantLoad) {
+      if (videoElement !== null) {
+        videoElement.style.display = 'block';
+      }
+    }
   });
 </script>
 
