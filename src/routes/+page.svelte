@@ -76,6 +76,10 @@
 </div>
 
 <style lang=scss>
+  video::-webkit-media-controls {
+    display:none !important;
+  }
+  
   .main-page {
     height: calc(100vh - 100px);
     overflow: hidden;
