@@ -9,6 +9,17 @@
 
   onMount(() => {
     logosPerView = window.innerWidth > 1200 ? 3 : window.innerWidth > 500 ? 2 : 1;
+
+    const videoElement = document.getElementById('video');
+    const bgImg = document.getElementById('img-background');
+
+    videoElement?.addEventListener('suspend', () => {
+      // suspended loading. Show play UI..
+      if (videoElement !== undefined && bgImg !== undefined) {
+        videoElement.style.display = 'none';
+        bgImg.style.display = 'block';
+      }
+    });
   });
 </script>
 
@@ -17,6 +28,8 @@
     <video autoplay="autoplay" muted loop id="video" playsinline style="pointer-events: none;">
         <source src="/videos/whales.mp4" type="video/mp4" />
     </video>
+    <div id="img-background">
+    </div>
     <div class="hero-content">
         <h1>We Tackle Your <br>Growth Problems</h1>
         <p>Scalewhale is a Paid Media agency<br> with expertise in Analytics, and MarOps</p>
@@ -76,10 +89,14 @@
 </div>
 
 <style lang=scss>
-  video::-webkit-media-controls {
-    display:none !important;
+  #img-background {
+    background: url('https://cdn.discordapp.com/attachments/1029151819772985414/1052038805118525480/ezgif-frame-003.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 250px);
+    display: none;
   }
-  
+
   .main-page {
     height: calc(100vh - 100px);
     overflow: hidden;
