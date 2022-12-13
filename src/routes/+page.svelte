@@ -14,7 +14,7 @@
     const bgImg = document.getElementById('img-background');
 
     videoElement?.addEventListener('suspend', () => {
-      if (bgImg !== null) {
+      if (bgImg !== null && window.innerWidth > 400) {
         bgImg.style.display = 'block';
         videoElement.style.display = 'none';
       }
