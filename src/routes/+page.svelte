@@ -20,6 +20,10 @@
         // bgImg.style.display = 'block';
       }
     });
+
+    videoElement?.addEventListener('play', () => {
+      videoElement.style.display = 'block';
+    });
   });
 </script>
 
@@ -111,6 +115,7 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
+        display: none;
       }
 
       .hero-content {
