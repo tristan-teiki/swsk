@@ -10,20 +10,20 @@
   onMount(() => {
     logosPerView = window.innerWidth > 1200 ? 3 : window.innerWidth > 500 ? 2 : 1;
 
-    const videoElement = document.getElementById('video');
-    // const bgImg = document.getElementById('img-background');
+    // const videoElement = document.getElementById('video');
+    // // const bgImg = document.getElementById('img-background');
 
-    videoElement?.addEventListener('suspend', () => {
-      // suspended loading. Show play UI..
-      if (videoElement !== undefined) {
-        videoElement.style.display = 'none';
-        // bgImg.style.display = 'block';
-      }
-    });
+    // videoElement?.addEventListener('suspend', () => {
+    //   // suspended loading. Show play UI..
+    //   if (videoElement !== undefined) {
+    //     videoElement.style.display = 'none';
+    //     // bgImg.style.display = 'block';
+    //   }
+    // });
 
-    videoElement?.addEventListener('play', () => {
-      videoElement.style.display = 'block';
-    });
+    // videoElement?.addEventListener('play', () => {
+    //   videoElement.style.display = 'block';
+    // });
   });
 </script>
 
@@ -115,7 +115,7 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
-        display: none;
+        display: block;
       }
 
       .hero-content {
