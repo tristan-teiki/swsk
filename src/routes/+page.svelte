@@ -13,12 +13,19 @@
     const videoElement = document.getElementById('video');
     const bgImg = document.getElementById('img-background');
 
-    videoElement?.addEventListener('suspend', () => {
-      if (bgImg !== null) {
-        bgImg.style.display = 'block';
-        videoElement.style.display = 'none';
-      }
-    });
+    videoElement.style.display = 'none';
+
+    if (window.innerWidth > 500) {
+      videoElement?.addEventListener('suspend', () => {
+        setTimeout(() => {
+          if (bgImg !== null) {
+              bgImg.style.display = 'block';
+              videoElement.style.display = 'none';
+            }
+        }, 1000);
+      });
+    }
+
   });
 </script>
 
