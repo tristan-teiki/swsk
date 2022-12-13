@@ -27,8 +27,8 @@
     <video autoplay="autoplay" muted loop id="video" playsinline style="pointer-events: none;">
         <source src="/videos/whales.mp4" type="video/mp4" />
     </video>
-    <!-- <div id="img-background">
-    </div> -->
+    <div id="img-background">
+    </div>
     <div class="hero-content">
         <h1>We Tackle Your <br>Growth Problems</h1>
         <p>Scalewhale is a Paid Media agency<br> with expertise in Analytics, and MarOps</p>
